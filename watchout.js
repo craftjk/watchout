@@ -14,28 +14,12 @@ var Player = function() {
   this.x = gameOptions.width * 0.5;
   this.y = gameOptions.height * 0.5;
   this.rad = 15;
-  var timer;
   this.drag = d3.behavior.drag()
     .on('drag', function() {
-      this.dx = d3.event.dx;
-      this.dy = d3.event.dy;
-    })
-    .on('dragstart', function() {
-      var event = d3.event;
-      timer = setInterval(function() {
-        this.x += d3.event.dx;
-        this.y += d3.event.dy;
-        gameBoard.select('circle.player')
-                 .attr('class', 'enemy')
-                 .attr('cx', this.x)
-                 .attr('cy', this.y)
-                 .attr('r', this.rad)
-                 .attr('fill', 'yellow')
-      }.bind(this), 10);
-    })
-    .on('dragend', function() {
-      timer = null;
-    });
+      this.x += d3.event.dx;
+      this.y += d3.event.dy;
+      this.d3Node.attr('cx', this.x).attr('cy', this.y);
+    }.bind(this));
 
   this.d3Node = gameBoard.append('svg:circle')
                          .attr('class', 'player')
