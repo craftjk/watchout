@@ -4,19 +4,43 @@
 Feel free to use it if you like. */
 
 body {
-  background-color: lightgrey;
+  background-image: url('unicorn_dojo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: lightgray;
+}
+
+.high, .current, .collisions {
+  font-family: fantasy;
+  font-weight: bold;
 }
 
 .container {
+  width: 1000px;
   margin: auto;
 }
 
 .board {
   margin-left: auto;
   margin-right: auto;
-  background-color: black;
+
 }
 
 .enemy {
   background-color: red;
+}
+
+.star {
+  animation-duration: 2s;
+  animation-name: spin;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(90);
+  }
 }
